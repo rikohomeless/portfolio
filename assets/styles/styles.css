@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+/***
+    The new CSS reset - version 1.7.3 (last updated 7.8.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+    -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+html.fslightbox-active,
+body.fslightbox-active {
+  position: fixed !important;
+  overflow: hidden !important;
+  top: 0 !important;
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333131;
+}
+
+.nightmode-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    border: none;    
+    width: 40px; 
+    height: 40px; 
+    cursor: pointer;
+}
+
+
+.toggle-btn {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  margin: 0 auto;
+  border-radius: 20px;
+  transform: translateX(-50px);
+
+}
+
+input[type="checkbox"] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: 0px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+}
+
+/* первая кнопка бля сука нахуй бля жоппааааа */
+
+#_1st-toggle-btn span {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  overflow: hidden;
+  opacity: 1;
+  background-color: #fff;
+  box-shadow: 0px 2px 10px #d9d9d9;
+  border-radius: 20px;
+  transition: 0.2s ease background-color, 0.2s ease opacity;
+}
+
+#_1st-toggle-btn span:before,
+#_1st-toggle-btn span:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  transition: 0.5s ease transform, 0.2s ease background-color;
+}
+
+#_1st-toggle-btn span:before {
+  background-color: #fff;
+  transform: translate(-26px, 0px);
+  z-index: 1;
+}
+
+#_1st-toggle-btn span:after {
+  background-color: #121212;
+  transform: translate(2px, 0px);
+  z-index: 0;
+}
+
+#_1st-toggle-btn input[type="checkbox"]:checked + span {
+  background-color: #121212;
+}
+
+#_1st-toggle-btn input[type="checkbox"]:active + span {
+  opacity: 0.5;
+}
+
+#_1st-toggle-btn input[type="checkbox"]:checked + span:before {
+  background-color: #121212;
+  transform: translate(24px, -5px);
+}
+
+#_1st-toggle-btn input[type="checkbox"]:checked + span:after {
+  background-color: #fff;
+  transform: translate(28px, 0px);
+}
+
+.dark-theme {
+    background-color: #121212;
+    color: #f0f0f0;
+    }
+
+.dark-theme .content__hello-img {
+    border-color: #ffffff; /* тёмная тема — белая рамка */
+}
+
+.dark-theme .content__social-item img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+.dark-theme .content__top-social-item img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+.dark-theme .content__top-social-item {
+    color: #ffffff;
+}
+
+.dark-theme .content__top-social-item span {
+    color: #ffffff;
+    transition: filter 0.3s ease;
+}
+
+.dark-theme .content__social-item span {
+    color: #ffffff;
+}
+  a {
+    color: black;
+    font-weight: 600;
+}
+
+.dark-theme .main-item__title span {
+    color: #ffffff;
+}
+
+.dark-theme .footer__social-item img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+    background-color: black;
+    color: #c8cbcd;
+    }
+
+    a {
+        color: #fff;
+    }
+
+    .content__social-item img,
+    .content__top-social-item img,
+    .footer__social-item img{
+    filter: invert(1);
+    }
+}
+
+
+.main {
+    margin: auto;
+    width: 47.5rem;
+}
+
+.content__hello {
+    display: flex;
+    margin-top: 4.2rem;
+    margin-bottom: 3.5rem;
+    font-size: 28px;
+    line-height: 2.8rem;
+}
+
+.content__hello-img {
+    width: 242px;
+    height: 242px;
+    min-width: 142px;
+    border-radius: 20px;
+    border: 4px solid;
+    border-color: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.content__hello-text {
+    margin-left: 2.2rem;
+    line-height: 2.7rem;
+    margin-top: 5px;
+}
+
+
+.content__name a {
+    font-weight: 300;
+    letter-spacing: 0.03em;
+}
+
+.content__description {
+    position: relative;
+    margin-top: 30px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+}
+
+.header {
+    display: flex;
+    justify-content: end;
+    margin-top: 0.2rem;
+}
+.header span {
+    margin-left: 3px;
+}
+
+.content__social {
+    display: flex;
+    max-width: 36rem;
+    max-height: 5rem;
+    font-size: 18px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    flex: 1 1 0%;
+    -webkit-box-pack: start;
+    justify-content: space-between;
+}
+
+.content__top-social-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 55px;
+    color: #000;
+    margin-right: 25px;    
+    transition: color 0.3s ease;
+    color: inherit;
+    
+}
+
+.content__top-social-item img {
+    width: 22px;
+    height: 22px;
+
+}
+
+.content__social-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 120px;
+        
+}
+.content__social-item img {
+    width: 22px;
+    height: 22px;
+    margin-left: 21px;
+}
+
+.content__social-item span {
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.content__about-header {
+    position: absolute;
+    font-size: 2.4rem;
+    margin-top: 1.4rem;
+    line-height: 4rem;
+    text-transform: uppercase;
+}
+
+.content__subheader {
+    font-size: 1.4rem;
+    line-height: 4rem;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.content__main-item {
+    display: flex;
+    line-height: 1.8rem;
+    margin-bottom: 1.8rem;
+}
+.content__main-item.project img {
+    max-width: 300px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+}
+
+.main-item__description img {
+    border-radius: 25px;
+}
+
+.main-item__title span{
+    color: inherit;
+    
+    transition: color 0.3s ease;
+
+}
+
+.project .main-item__title {
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.project .main-item__links span {
+    margin-right: 4px;
+}
+
+.project .main-item__description {
+    font-weight: 100;
+    margin-top: 1rem;
+}
+
+.project .main-item__subdescription {
+    font-weight: 200;
+    margin-top: 1rem;
+}
+.project .main-item__subdescription span {
+    font-weight: 400;
+}
+
+.post .main-item__title{
+    font-size: 1.48rem;
+    line-height: 2rem;
+    font-weight: 500;
+    letter-spacing: .05rem;
+}
+
+.post .main-item__title a{
+    box-shadow: none;
+    letter-spacing: 0.03em;
+}
+
+.main-item__title3 {
+    margin-top: 40px;
+    
+    font-weight: 500;
+    font-size: 1.48rem;
+    line-height: 2rem;
+    letter-spacing: .05rem;
+
+}
+
+
+.post .main-item__date {
+    display: inline-block;
+    font-size: .94rem;
+    font-weight: 700;
+    line-height: 1.55rem;
+}
+
+.post .main-item__description {
+    line-height: 1.8rem;
+    margin-top: -0.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.footer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__social-item img {
+    width: 22px;
+    height: 22px;
+    margin-right: 4px;
+    filter: none;
+    transition: filter 0.3s ease;
+}
+
+.important__text {
+    font-weight: 700;
+    color: inherit;
+    transition: 0.3s ease;
+}
+
+.fslightbox-container {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    will-change: opacity, transform;
+}
+
+.fslightbox-open {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.fslightbox-closed {
+    opacity: 0;
+    transform: scale(0.95);
+}
